@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Life Support System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('sitee.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Cinzel', serif;
+      color: rgba(255, 255, 255, 0.911);
+      line-height: 1.9;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 60px auto;
+      background: rgba(14, 8, 8, 0.406);
+      padding: 40px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 42px;
+      color: #eeff02;
+      margin-bottom: 30px;
+      text-decoration: underline;
+      text-underline-offset: 10px;
+      font-weight: 700;
+    }
+
+    p, li {
+      font-size: 18px;
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 25px;
+    }
+
+    .credit {
+      margin-top: 40px;
+      font-style: italic;
+      font-weight: bold;
+      text-align: right;
+      color: #dfdb00;
+    }
+
+    .co-dev {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #d9e800;
+    }
+
+    .co-dev ul {
+      margin-left: 25px;
+      margin-top: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #b1e407, #5b7c07);
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 40px;
+      box-shadow: 0 0 12px rgba(167, 131, 13, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(238, 254, 10, 0.7);
+    }
+
+    #voiceToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(38, 38, 30, 0);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 24px;
+      box-shadow: 0 0 10px black;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Voice Button -->
+  <button id="voiceToggle" onclick="toggleSpeech()" title="Play/Stop Voice">🔊</button>
+
+  <div class="container">
+    <h1>About us: An Elegant Insight into Life Support Systems</h1>
+
+    <p><strong>Life Support System</strong> is an educational and informative website created to provide deep insight into the world of medical life support systems, surgical procedures, diagnostic tools, and essential hospital equipment. The site is designed as an interactive learning platform, ideal for students, science enthusiasts, and anyone interested in the medical field.</p>
+
+    <p><strong>Purpose of the Website:</strong></p>
+    <ul>
+      <li>Educate visitors about critical machines and tools used in hospitals to save and support human life.</li>
+      <li>Explain various surgeries and why they are performed.</li>
+      <li>Showcase technological advancements in the field of diagnostics and life-saving equipment.</li>
+      <li>Inspire young minds to explore biomedical engineering, healthcare, and medical sciences.</li>
+    </ul>
+
+    <p><strong>What You’ll Discover Here:</strong></p>
+    <ul>
+      <li><strong>Equipments:</strong> Detailed info about ventilators, MRI machines, ECG, CT scanners, etc.</li>
+      <li><strong>Surgeries:</strong> Explore common surgeries like heart surgery, brain surgery, cosmetic surgery.</li>
+      <li><strong>Medical Tools:</strong> Learn about stethoscopes, scalpels, surgical drills, and more.</li>
+      <li><strong>Extras:</strong> Speak page, Feedback form, and a user-friendly interface.</li>
+    </ul>
+
+    <p><strong>Who Created It?</strong><br>
+    This project was proudly developed by <strong>Team A, Class 8th A</strong>, lead by <strong>Arnav Nandan</strong>, a passionate young innovator with a strong interest in AI and technology. The website is both a school project and a tribute to the medical heroes who work every day to save lives.</p>
+
+    <p><strong>Educational Value:</strong></p>
+    <ul>
+      <li>A digital exhibition of life-saving technology.</li>
+      <li>A science project for school submissions.</li>
+      <li>A self-learning resource for kids and teens curious about how hospitals function.</li>
+    </ul>
+
+    <div class="co-dev">
+      <strong>Co-developers:</strong>
+      <ul>
+        <li>Anshika</li>
+        <li>Aarav</li>
+        <li>Abhya</li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="back-button">← Back to Home</a>
+
+    <div class="credit">Created with dedication by Team A</div>
+  </div>
+
+  <script>
+    let isSpeaking = false;
+    const voiceBtn = document.getElementById("voiceToggle");
+
+    function toggleSpeech() {
+      if (!isSpeaking) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = document.querySelector('.container')?.innerText || document.body.innerText;
+        msg.lang = 'en-IN';
+        msg.rate = 1;
+        msg.pitch = 1.1;
+
+        const voices = speechSynthesis.getVoices();
+        const femaleVoice = voices.find(v =>
+          (v.name.includes("Female") || v.name.includes("female") || v.name.includes("Google UK English Female")) &&
+          v.lang.includes("en")
+        );
+        if (femaleVoice) {
+          msg.voice = femaleVoice;
+        }
+
+        speechSynthesis.cancel();
+        speechSynthesis.speak(msg);
+        isSpeaking = true;
+        msg.onend = () => {
+          isSpeaking = false;
+        };
+      } else {
+        speechSynthesis.cancel();
+        isSpeaking = false;
+      }
+    }
+
+    window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+  </script>
+
+</body>
+</html>
+
+
+

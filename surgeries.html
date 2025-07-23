@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surgeries</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('hospital.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      color: #ffffff;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      justify-items: center;
+    }
+
+    .card {
+      background: rgba(5, 79, 111, 0.297);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(7, 181, 181, 0.607);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 300px;
+      color: #0ad8c7;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(17, 138, 244, 0.932);
+    }
+
+    .card img {
+      max-width: 100%;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+      color: #f2ea0ad6;
+    }
+
+    .card p {
+      font-size: 17px;
+      line-height: 1.4;
+      margin: 5px 0;
+      color: #fffffff9;
+    }
+
+    .back-btn {
+      display: block;
+      width: 100px;
+      margin: 40px auto 60px;
+      padding: 12px 20px;
+      text-align: center;
+      font-weight: bold;
+      background: #f59f0173;
+      color: #000000;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #d69107;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Famous Surgeries & Their Inventors</h1>
+
+  <div class="container">
+
+    <div class="card">
+      <img src="images/appendectomy.jpg" alt="Appendectomy">
+      <h3>Appendectomy</h3>
+      <p><strong>Invented:</strong> 1735</p>
+      <p><strong>Pioneer:</strong> Claudius Amyand</p>
+      <p>Removes inflamed appendix to prevent rupture.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/heart.jpg" alt="Heart Surgery">
+      <h3>Heart Surgery</h3>
+      <p><strong>Performed:</strong> 1893</p>
+      <p><strong>Pioneer:</strong> Dr. Daniel Hale Williams</p>
+      <p>Repairs cardiac injuries and valve defects.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/bypass.jpg" alt="Bypass Surgery">
+      <h3>Coronary Bypass</h3>
+      <p><strong>Invented:</strong> 1967</p>
+      <p><strong>Pioneer:</strong> Dr. René Favaloro</p>
+      <p>Restores heart blood flow in blocked arteries.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/tonsillectomy.jpg" alt="Tonsillectomy">
+      <h3>Tonsillectomy</h3>
+      <p><strong>Ancient:</strong> 600 BCE</p>
+      <p><strong>Pioneer:</strong> Sushruta</p>
+      <p>Removes tonsils to treat infection or obstruction.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/laparoscopy.jpg" alt="Laparoscopic Surgery">
+      <h3>Laparoscopic Surgery</h3>
+      <p><strong>Developed:</strong> 1980s</p>
+      <p><strong>Pioneer:</strong> Dr. Kurt Semm</p>
+      <p>Minimally invasive surgery using a camera.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/kidney-transplant.jpg" alt="Kidney Transplant">
+      <h3>Kidney Transplant</h3>
+      <p><strong>Invented:</strong> 1954</p>
+      <p><strong>Pioneer:</strong> Dr. Joseph Murray</p>
+      <p>Replaces failed kidney with a donor one.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/open-heart.jpg" alt="Open-Heart Surgery">
+      <h3>Open-Heart Surgery</h3>
+      <p><strong>Invented:</strong> 1950s</p>
+      <p><strong>Pioneer:</strong> Dr. C. W. Lillehei</p>
+      <p>Treats heart defects using heart-lung machine.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/cataract.jpg" alt="Cataract Surgery">
+      <h3>Cataract Surgery</h3>
+      <p><strong>Ancient:</strong> 600 BCE</p>
+      <p><strong>Pioneer:</strong> Sushruta (India)</p>
+      <p>Removes cloudy lens to restore vision.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/plastic.jpg" alt="Plastic Surgery">
+      <h3>Plastic Surgery</h3>
+      <p><strong>Modern:</strong> WWI Era</p>
+      <p><strong>Pioneer:</strong> Sir Harold Gillies</p>
+      <p>Reconstructs damaged or altered body parts.</p>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="back-btn">← Back</a>
+
+</body>
+</html>

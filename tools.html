@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medical Tools</title>
+  <style>
+    body {
+      background: url('tool2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: rgb(255, 255, 255);
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #f9f9f9;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+    }
+
+    .card {
+      width: 250px;
+      background: rgba(5, 11, 15, 0.342);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #ae1f1f8a;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(13, 135, 168, 0.705), 0 0 25px rgba(255, 255, 255, 0.4);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card h2 {
+      margin: 10px 0 5px;
+      color: #ffd700;
+    }
+
+    .card p {
+      padding: 0 10px 10px;
+      font-size: 14px;
+    }
+
+    .back-button {
+      display: block;
+      width: fit-content;
+      margin: 30px auto 0;
+      padding: 10px 20px;
+      background-color: #ffd9006d;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #fdd90a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Essential Medical Tools</h1>
+
+  <div class="container">
+    <div class="card">
+      <img src="images/stethoscope.jpg" alt="Stethoscope">
+      <h2>Stethoscope</h2>
+      <p>Used to listen to heart and lung sounds.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/surgical_light.jpg" alt="Surgical Table Light">
+      <h2>Surgical Table Light</h2>
+      <p>Provides bright, shadow-free illumination during surgeries for better visibility.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/sphygmomanometer.jpg" alt="Sphygmomanometer">
+      <h2>Sphygmomanometer</h2>
+      <p>Used to check blood pressure levels.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/otoscope.jpg" alt="Otoscope">
+      <h2>Otoscope</h2>
+      <p>Examines the ear canal and eardrum for infection.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/laryngoscope.jpg" alt="Laryngoscope">
+      <h2>Laryngoscope</h2>
+      <p>Used to see the larynx and vocal cords clearly.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/surgical_drill.jpg" alt="Surgical Drill">
+      <h2>Surgical Drill</h2>
+      <p>Used to bore holes in bone during orthopedic and brain surgeries.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/forceps.jpg" alt="Forceps">
+      <h2>Forceps</h2>
+      <p>Grasping tool used for holding tissues during procedures.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/scalpel.jpg" alt="Scalpel">
+      <h2>Scalpel</h2>
+      <p>Small, sharp blade used to make incisions during surgery.</p>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-button">⬅ Back to Home</a>
+
+</body>
+</html>

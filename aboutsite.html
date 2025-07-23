@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Life Support System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('us.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Cinzel', serif;
+      color: rgb(238, 238, 238);
+      line-height: 1.9;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 60px auto;
+      background: rgba(42, 58, 63, 0.331);
+      padding: 40px;
+      border-radius: 15px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 42px;
+      color: #ffdd03;
+      margin-bottom: 30px;
+      text-decoration: underline;
+      text-underline-offset: 10px;
+      font-weight: 700;
+    }
+    p, li {
+      font-size: 18px;
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+    ul {
+      margin-top: 10px;
+      padding-left: 25px;
+    }
+    .credit {
+      margin-top: 40px;
+      font-style: italic;
+      font-weight: bold;
+      text-align: right;
+      color: #f7ff02;
+    }
+    .co-devs {
+      margin-top: 20px;
+      font-weight: bold;
+      color:#ffdd03
+    }
+    .back-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 22px;
+      background: linear-gradient(135deg, #fff, #ccc);
+      color: #ff1414;
+      font-weight: bold;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 0 10px #fcf00c55;
+    }
+    #voiceToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 24px;
+      box-shadow: 0 0 10px black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="voiceToggle" onclick="toggleSpeech()" title="Play/Stop Voice">🔊</button>
+
+  <div class="container">
+    <h1>Elements of Life Support Website</h1>
+
+    <p><strong>Life Support System</strong> is an educational and informative website created to provide deep insight into the world of medical life support systems, surgical procedures, diagnostic tools, and essential hospital equipment.</p>
+
+    <p><strong>Purpose:</strong></p>
+    <ul>
+      <li>Educate about machines/tools used in hospitals to save lives.</li>
+      <li>Explain various surgeries and their importance.</li>
+      <li>Showcase medical technology and innovation.</li>
+    </ul>
+
+    <p><strong>Sections Included:</strong></p>
+    <ul>
+      <li><strong>Equipments:</strong> Ventilators, ECG, MRI, CT etc.</li>
+      <li><strong>Surgeries:</strong> Heart, Brain, Cosmetic and more.</li>
+      <li><strong>Tools:</strong> Operating instruments and utilities.</li>
+    </ul>
+
+    <p><strong>Created By:</strong> Team A, Class 8th A — lead by <strong>Arnav Nandan</strong>.</p>
+
+    <p class="co-devs">Co-Developers:</p>
+    <ul>
+      <li>Anshika</li>
+      <li>Aarav</li>
+      <li>Abhay</li>
+    </ul>
+
+    <a href="index.html" class="back-button">← Back to Home</a>
+
+    <div class="credit">Created with dedication by Team A</div>
+  </div>
+
+  <script>
+    let isSpeaking = false;
+    const voiceBtn = document.getElementById("voiceToggle");
+
+    function getPreferredVoice() {
+      const voices = window.speechSynthesis.getVoices();
+      return (
+        voices.find(v => v.name === "Google UK English Female") ||
+        voices.find(v => v.name.toLowerCase().includes("zira")) ||
+        voices.find(v => v.name.toLowerCase().includes("female")) ||
+        voices.find(v => v.lang.includes("en")) ||
+        voices[0]
+      );
+    }
+
+    function toggleSpeech() {
+      if (!isSpeaking) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = document.querySelector('.container')?.innerText || document.body.innerText;
+        msg.lang = 'en-IN';
+        msg.rate = 1;
+        msg.pitch = 1.2;
+
+        const voice = getPreferredVoice();
+        if (voice) msg.voice = voice;
+
+        speechSynthesis.cancel(); // Clear any previous
+        speechSynthesis.speak(msg);
+        isSpeaking = true;
+
+        msg.onend = () => {
+          isSpeaking = false;
+        };
+      } else {
+        speechSynthesis.cancel();
+        isSpeaking = false;
+      }
+    }
+
+    window.speechSynthesis.onvoiceschanged = () => {
+      window.speechSynthesis.getVoices();
+    };
+  </script>
+
+</body>
+</html>

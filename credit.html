@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Main-Arnav Nandan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(235, 91, 7, 0.797);
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 8px;
+      margin-top: 10px;
+      object-fit: cover;
+      border: 15px solid #c2ca29;
+      box-shadow: 0 0 25px #211d0d, 0 0 60px #47422c;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #ecb100, 0 0 80px #3307a0;
+    }
+
+    h1 {
+      color: #d6d61b;
+      font-size: 36px;
+      margin-top: 15px;
+    }
+
+    .cursive-name {
+      font-family: 'Brush Script MT', cursive;
+      color: #ffa7bc;
+      font-size: 30px;
+      margin-top: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-top: 25px;
+    }
+
+    .back-button {
+      margin-top: 40px;
+      
+    }
+
+    .back-button a {
+      text-decoration: none;
+      color: rgb(40, 1, 41);
+      background-color: #d5e000b7;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .back-button a:hover {
+      background-color: #fbb503;
+    }
+
+    #voiceToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 0, 0);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 24px;
+      box-shadow: 0 0 10px black;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Play/Stop Button -->
+<button id="voiceToggle" onclick="toggleSpeech()" title="Play/Stop Voice">🔊</button>
+
+<div class="back-button">
+  <a href="index.html">← Back to Home</a>
+</div>
+
+<div class="container">
+  <img src="arnav.jpg" alt="Arnav Nandan's Photo">
+  <div class="cursive-name">Arnav Nandan</div>
+  <h1>🌟 Main Credit Page 🌟</h1>
+  <p>Hello! I am <strong>Arnav Nandan</strong>, born on <strong>21st February 2012</strong>. I’m currently <strong>13 years old</strong> and I built this website completely on my own through dedication, curiosity, and deep love for technology.</p>
+  <p>I enjoy <strong>reading</strong>, <strong>sketching</strong>, <strong>running</strong>, <strong>cycling</strong>, and most importantly—<strong>interacting with computers through coding</strong>. At a young age, I have already learned <strong>Python</strong>, <strong>CSS</strong>, <strong>C++</strong>, and <strong>Java</strong>.</p>
+  <p>My first big project was a fully functional artificial intelligence named <strong>Skynet</strong>. This website you're seeing is my <strong>second major creation</strong> in the world of technology.</p>
+  <p>I dream of building a <strong>unicorn company</strong> that transforms the IT industry.</p>
+</div>
+
+<script>
+  let isSpeaking = false;
+  function toggleSpeech() {
+    if (!isSpeaking) {
+      const msg = new SpeechSynthesisUtterance();
+      msg.text = document.querySelector('.container')?.innerText || document.body.innerText;
+      msg.lang = 'en-IN';
+      msg.rate = 1;
+      msg.pitch = 1.1;
+
+      const voices = speechSynthesis.getVoices();
+      const femaleVoice = voices.find(v =>
+        (v.name.includes("Female") || v.name.includes("Google UK English Female")) &&
+        v.lang.includes("en")
+      );
+      if (femaleVoice) {
+        msg.voice = femaleVoice;
+      }
+
+      speechSynthesis.cancel();
+      speechSynthesis.speak(msg);
+      isSpeaking = true;
+      msg.onend = () => {
+        isSpeaking = false;
+      };
+    } else {
+      speechSynthesis.cancel();
+      isSpeaking = false;
+    }
+  }
+
+  window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+</script>
+
+</body>
+</html>

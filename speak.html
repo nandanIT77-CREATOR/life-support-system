@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speak - Life Support System</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('site.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      padding-top: 120px;
+    }
+
+    .speak-box {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 40px;
+      display: inline-block;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    #playBtn {
+       background: linear-gradient(135deg, #d8c600fd, #f8009544);
+      color: black;
+    }
+
+    #stopBtn {
+       background: linear-gradient(135deg, #f8009544, #d8c600fd);
+      color: rgb(10, 8, 8);
+      display: none;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #dc8905ac;
+    }
+
+    .back-button {
+      margin-top: 50px;
+      display: inline-block;
+      background: linear-gradient(135deg, #23037d31, #03095fdb);
+      color: rgb(255, 255, 255);
+      padding: 12px 28px;
+      font-size: 17px;
+      font-weight: bold;
+      border-radius: 35px;
+      text-decoration: none;
+      box-shadow: 0 0 12px rgba(0, 47, 255, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 18px rgb(255, 255, 255);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="speak-box">
+    <h1>Welcome Message</h1>
+    <button id="playBtn" onclick="speakMessage()">🔊 Speak</button>
+    <button id="stopBtn" onclick="stopSpeech()">⛔ Stop</button>
+  </div>
+
+  <br>
+  <a href="index.html" class="back-button">← Back to Home</a>
+
+  <script>
+    const message = "Waaarm welcome from Team A for visiting this site. Here, you’ll discover the elements of life that support humans during emergency situations. Explore our sections to learn about medical equipment, surgeries, and tools that save lives. Thank you very much for visiting.";
+
+    let utterance;
+
+    function speakMessage() {
+      stopSpeech();
+      utterance = new SpeechSynthesisUtterance(message);
+      utterance.rate = 1;
+      utterance.pitch = 1.2;
+      utterance.lang = "en-IN";
+
+      const voices = speechSynthesis.getVoices();
+      const femaleVoice = voices.find(v => v.name.includes("Female") || v.name.includes("Google UK English Female"));
+      if (femaleVoice) utterance.voice = femaleVoice;
+
+      speechSynthesis.speak(utterance);
+      document.getElementById("stopBtn").style.display = "inline-block";
+
+      utterance.onend = () => {
+        document.getElementById("stopBtn").style.display = "none";
+      };
+    }
+
+    function stopSpeech() {
+      speechSynthesis.cancel();
+      document.getElementById("stopBtn").style.display = "none";
+    }
+
+    window.speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+  </script>
+
+</body>
+</html>
